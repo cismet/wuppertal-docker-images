@@ -8,7 +8,7 @@ LABEL de.cismet.cids.distribution.wuppertal.name="cids-distribution-wuppertal im
       de.cismet.cids.distribution.wuppertal.tag.git="v5.0" \
       de.cismet.cids.distribution.wuppertal.descripton="cids Wuppertal Distribution Runtime Image"
 
-ENV CIDS_ACCOUNT_EXTENSION Switchon
+ENV CIDS_ACCOUNT_EXTENSION WunDa
 ENV CIDS_CODEBASE http://wuppertal-docker.cismet.de
 ENV CIDS_LOCAL_DIR ${CIDS_LIB_DIR}/local${CIDS_ACCOUNT_EXTENSION}
 ENV CIDS_STARTER_DIR ${CIDS_LIB_DIR}/starter${CIDS_ACCOUNT_EXTENSION}
