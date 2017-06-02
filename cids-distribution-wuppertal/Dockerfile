@@ -1,4 +1,4 @@
-FROM cismet/cids-distribution:5.0
+FROM cismet/cids-distribution-cache:5.0
 
 MAINTAINER Pascal Dihé <pascal.dihe@cismet.de>
 
@@ -33,9 +33,12 @@ COPY cidsDistribution/ ${CIDS_DISTRIBUTION_DIR}/
 
 # download the cids-distribution-wuppertal SNAPSHOT or RELEASE auto distribution 
 # RUN curl -fsSL https://github.com/cismet/cids-distribution-wuppertal/archive/v5.1.tar.gz | tar -xzC ${CIDS_GENERATOR_DIR}/
-RUN curl -fsSL https://github.com/cismet/cids-distribution-wuppertal/archive/dev.tar.gz | tar -xzC ${CIDS_GENERATOR_DIR}/
 
-# prepare dowloads all dependencies and uses the build cache
+# USE docker ADD instead of RUN for SNPASHOT Builds to omit the cache and always download the latest DEV archive!
+ADD https://codeload.github.com/cismet/cids-distribution-wuppertal/tar.gz/dev /tmp/dev.tar.gz
+RUN tar -xzf /tmp/dev.tar.gz -C ${CIDS_GENERATOR_DIR}/
+
+# prepare downloads all dependencies and uses the build cache
 # this image inherits from cids-distribution-cache, so dependencies should be there already
 # RUN ${CIDS_DISTRIBUTION_DIR}/utils/prepare_autodistribution.sh
 
